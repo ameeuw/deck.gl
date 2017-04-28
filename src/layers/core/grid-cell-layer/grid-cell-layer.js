@@ -120,7 +120,9 @@ export default class GridCellLayer extends Layer {
 
   _getModel(gl) {
     const geometry = new CubeGeometry({});
-    const shaders = assembleShaders(gl, this.getShaders());
+    const shaders = assembleShaders({gl,
+      shaderCache: this.context.shaderCache,
+      opts: this.getShaders()});
 
     return new Model({
       gl,
